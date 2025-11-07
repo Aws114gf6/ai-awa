@@ -332,14 +332,14 @@ function App() {
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="اكتب رسالتك هنا..."
-                  disabled={isLoading || !modelReady}
+                  placeholder={modelReady ? "اكتب رسالتك هنا..." : "اكتب رسالتك (النموذج يحمّل...)"}
+                  disabled={isLoading}
                   className="message-input"
                   data-testid="message-input"
                 />
                 <Button
                   onClick={sendMessage}
-                  disabled={isLoading || !modelReady || !inputMessage.trim()}
+                  disabled={isLoading || !inputMessage.trim()}
                   className="send-btn"
                   data-testid="send-message-btn"
                 >
