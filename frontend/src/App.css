@@ -376,14 +376,15 @@ body {
 }
 
 .send-btn {
-  padding: 16px 24px;
+  padding: 16px 20px;
   background: linear-gradient(135deg, #4dd0e1 0%, #26c6da 100%);
   color: white;
   border: none;
-  border-radius: 16px;
+  border-radius: 14px;
   font-weight: 600;
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(77, 208, 225, 0.3);
+  flex-shrink: 0;
 }
 
 .send-btn:hover:not(:disabled) {
@@ -395,6 +396,11 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+}
+
+.send-btn .icon {
+  width: 20px;
+  height: 20px;
 }
 
 /* Loading Screen */
