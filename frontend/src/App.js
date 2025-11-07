@@ -251,18 +251,7 @@ function App() {
 
       {/* Main Chat Area */}
       <div className="chat-container" data-testid="chat-container">
-        {modelLoading ? (
-          <div className="loading-screen" data-testid="model-loading">
-            <div className="loading-content">
-              <Loader2 className="spinner" />
-              <h2>تحميل نموذج الذكاء الاصطناعي المحلي</h2>
-              <p>{loadingProgress}</p>
-              <p className="loading-note">
-                قد يستغرق التحميل الأول بضع دقائق. النموذج يعمل بالكامل على جهازك.
-              </p>
-            </div>
-          </div>
-        ) : !currentConversation ? (
+        {!currentConversation ? (
           <div className="empty-state" data-testid="empty-state">
             <Button
               variant="ghost"
