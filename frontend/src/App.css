@@ -333,10 +333,13 @@ body {
 
 /* Input Area */
 .input-area {
-  padding: 24px 32px;
+  padding: 20px 24px;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
 }
 
 .input-wrapper {
@@ -345,6 +348,7 @@ body {
   display: flex;
   gap: 12px;
   align-items: center;
+  width: 100%;
 }
 
 .message-input {
