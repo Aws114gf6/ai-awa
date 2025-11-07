@@ -180,10 +180,30 @@ function App() {
 
   return (
     <div className="app-container" data-testid="app-container">
+      {/* Overlay للهواتف */}
+      {sidebarOpen && (
+        <div 
+          className="sidebar-overlay" 
+          onClick={() => setSidebarOpen(false)}
+          data-testid="sidebar-overlay"
+        ></div>
+      )}
+
       {/* Sidebar */}
       <div className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`} data-testid="sidebar">
         <div className="sidebar-header">
-          <h2>المحادثات</h2>
+          <div className="sidebar-header-top">
+            <h2>المحادثات</h2>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="close-sidebar-btn"
+              onClick={() => setSidebarOpen(false)}
+              data-testid="close-sidebar-btn"
+            >
+              <X className="icon" />
+            </Button>
+          </div>
           <Button
             onClick={createNewConversation}
             className="new-chat-btn"
