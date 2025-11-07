@@ -166,7 +166,8 @@ function App() {
         const newAiMsg = aiMsgResponse.data;
         setMessages((prev) => [...prev, newAiMsg]);
       } else {
-        toast.info("النموذج ما زال يحمّل. رسالتك تم حفظها.");
+        // لا نعرض رسالة إذا كان النموذج ما زال يحمّل
+        // الرسالة محفوظة وسيتم الرد عليها عندما يكون النموذج جاهزاً
       }
 
       // Update conversation list
