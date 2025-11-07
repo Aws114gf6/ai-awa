@@ -55,10 +55,9 @@ function App() {
       engineRef.current = engine;
       setModelReady(true);
       setModelLoading(false);
-      toast.success("تم تحميل النموذج بنجاح!");
     } catch (error) {
       console.error("Error initializing model:", error);
-      toast.error("فشل تحميل النموذج. يرجى المحاولة مرة أخرى.");
+      setLoadingProgress("حدث خطأ أثناء تحميل النموذج. يرجى إعادة تحميل الصفحة.");
       setModelLoading(false);
     }
   };
