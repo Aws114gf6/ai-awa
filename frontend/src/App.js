@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "@/App.css";
 import axios from "axios";
-import { Loader2, MessageSquare, Plus, Send, Trash2, Settings } from "lucide-react";
+import { Loader2, MessageSquare, Plus, Send, Trash2, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -20,7 +20,7 @@ function App() {
   const [modelLoading, setModelLoading] = useState(false);
   const [modelReady, setModelReady] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState("");
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const engineRef = useRef(null);
   const messagesEndRef = useRef(null);
 
