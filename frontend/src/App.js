@@ -115,7 +115,7 @@ function App() {
   };
 
   const sendMessage = async () => {
-    if (!inputMessage.trim() || !modelReady || !currentConversation) {
+    if (!inputMessage.trim() || !currentConversation) {
       if (!currentConversation) {
         toast.error("يرجى إنشاء محادثة جديدة أولاً");
       }
@@ -139,31 +139,35 @@ function App() {
       const newUserMsg = userMsgResponse.data;
       setMessages((prev) => [...prev, newUserMsg]);
 
-      // Generate AI response
-      const chatHistory = [...messages, newUserMsg].map((msg) => ({
-        role: msg.role,
-        content: msg.content,
-      }));
+      // Generate AI response only if model is ready
+      if (modelReady && engineRef.current) {
+        const chatHistory = [...messages, newUserMsg].map((msg) => ({
+          role: msg.role,
+          content: msg.content,
+        }));
 
-      const reply = await engineRef.current.chat.completions.create({
-        messages: chatHistory,
-        temperature: 0.7,
-        max_tokens: 512,
-      });
+        const reply = await engineRef.current.chat.completions.create({
+          messages: chatHistory,
+          temperature: 0.7,
+          max_tokens: 512,
+        });
 
-      const aiResponse = reply.choices[0].message.content;
+        const aiResponse = reply.choices[0].message.content;
 
-      // Save AI message
-      const aiMsgResponse = await axios.post(
-        `${API}/conversations/${currentConversation.id}/messages`,
-        {
-          role: "assistant",
-          content: aiResponse,
-        }
-      );
+        // Save AI message
+        const aiMsgResponse = await axios.post(
+          `${API}/conversations/${currentConversation.id}/messages`,
+          {
+            role: "assistant",
+            content: aiResponse,
+          }
+        );
 
-      const newAiMsg = aiMsgResponse.data;
-      setMessages((prev) => [...prev, newAiMsg]);
+        const newAiMsg = aiMsgResponse.data;
+        setMessages((prev) => [...prev, newAiMsg]);
+      } else {
+        toast.info("النموذج ما زال يحمّل. رسالتك تم حفظها.");
+      }
 
       // Update conversation list
       loadConversations();
