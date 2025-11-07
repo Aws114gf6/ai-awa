@@ -256,6 +256,14 @@ function App() {
           </div>
         ) : !currentConversation ? (
           <div className="empty-state" data-testid="empty-state">
+            <Button
+              variant="ghost"
+              className="menu-toggle-btn"
+              onClick={() => setSidebarOpen(true)}
+              data-testid="menu-toggle-btn"
+            >
+              <Menu className="icon" />
+            </Button>
             <div className="empty-content">
               <MessageSquare className="empty-icon" />
               <h2>مرحباً بك في تطبيق المحادثة المحلي</h2>
@@ -269,7 +277,18 @@ function App() {
         ) : (
           <>
             <div className="chat-header" data-testid="chat-header">
-              <h3>{currentConversation.title}</h3>
+              <div className="chat-header-right">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="menu-btn"
+                  onClick={() => setSidebarOpen(true)}
+                  data-testid="open-sidebar-btn"
+                >
+                  <Menu className="icon" />
+                </Button>
+                <h3>{currentConversation.title}</h3>
+              </div>
               <div className="model-status">
                 <div className="status-dot"></div>
                 <span>Phi-3.5 Mini (محلي)</span>
