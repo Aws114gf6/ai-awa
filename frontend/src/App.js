@@ -298,8 +298,22 @@ function App() {
                 <h3>{currentConversation.title}</h3>
               </div>
               <div className="model-status">
-                <div className="status-dot"></div>
-                <span>Phi-3.5 Mini (محلي)</span>
+                {modelLoading ? (
+                  <>
+                    <Loader2 className="status-spinner" />
+                    <span>يحمّل...</span>
+                  </>
+                ) : modelReady ? (
+                  <>
+                    <div className="status-dot"></div>
+                    <span>Phi-3.5 Mini (جاهز)</span>
+                  </>
+                ) : (
+                  <>
+                    <div className="status-dot offline"></div>
+                    <span>غير متصل</span>
+                  </>
+                )}
               </div>
             </div>
 
