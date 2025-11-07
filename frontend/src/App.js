@@ -80,6 +80,7 @@ function App() {
       setConversations([newConv, ...conversations]);
       setCurrentConversation(newConv);
       setMessages([]);
+      setSidebarOpen(false); // إغلاق الـ sidebar على الهواتف
       toast.success("تم إنشاء محادثة جديدة");
     } catch (error) {
       console.error("Error creating conversation:", error);
@@ -90,6 +91,7 @@ function App() {
   const selectConversation = async (conv) => {
     setCurrentConversation(conv);
     setMessages(conv.messages || []);
+    setSidebarOpen(false); // إغلاق الـ sidebar على الهواتف
   };
 
   const deleteConversation = async (convId, e) => {
