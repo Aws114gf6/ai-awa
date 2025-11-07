@@ -34,8 +34,11 @@ function App() {
 
   // Initialize WebLLM
   useEffect(() => {
-    initializeModel();
     loadConversations();
+    // تحميل النموذج في الخلفية
+    setTimeout(() => {
+      initializeModel();
+    }, 1000);
   }, []);
 
   const initializeModel = async () => {
@@ -55,9 +58,10 @@ function App() {
       engineRef.current = engine;
       setModelReady(true);
       setModelLoading(false);
+      toast.success("النموذج جاهز الآن! يمكنك بدء المحادثة");
     } catch (error) {
       console.error("Error initializing model:", error);
-      setLoadingProgress("حدث خطأ أثناء تحميل النموذج. يرجى إعادة تحميل الصفحة.");
+      toast.error("فشل تحميل النموذج. ستتمكن من حفظ الرسائل فقط.");
       setModelLoading(false);
     }
   };
