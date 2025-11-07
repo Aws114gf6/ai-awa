@@ -629,7 +629,12 @@ body {
   }
 
   .send-btn {
-    padding: 14px 18px;
+    padding: 14px 16px;
+  }
+
+  .send-btn .icon {
+    width: 18px;
+    height: 18px;
   }
 
   .empty-content h2 {
