@@ -270,7 +270,16 @@ function App() {
               {modelLoading && (
                 <div className="model-loading-notice">
                   <Loader2 className="loading-spinner-small" />
-                  <span>النموذج يحمّل في الخلفية... يمكنك البدء الآن!</span>
+                  <div className="loading-text">
+                    <span>النموذج يحمّل في الخلفية (قد يستغرق 2-5 دقائق)</span>
+                    <small>يمكنك البدء بالكتابة الآن، وسيرد النموذج عند اكتمال التحميل</small>
+                  </div>
+                </div>
+              )}
+              
+              {!modelLoading && !modelReady && (
+                <div className="model-error-notice">
+                  <span>النموذج غير متاح. يمكنك حفظ رسائلك فقط.</span>
                 </div>
               )}
               
