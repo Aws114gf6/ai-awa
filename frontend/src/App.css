@@ -274,12 +274,14 @@ body {
 .messages-area {
   flex: 1;
   overflow-y: auto;
+  min-height: 0;
 }
 
 .messages-container {
-  padding: 32px;
+  padding: 24px;
   max-width: 900px;
   margin: 0 auto;
+  min-height: 100%;
 }
 
 .message {
