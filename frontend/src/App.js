@@ -326,6 +326,19 @@ function App() {
 
             <ScrollArea className="messages-area">
               <div className="messages-container" data-testid="messages-container">
+                {messages.length === 0 && (
+                  <div className="chat-welcome">
+                    <MessageSquare className="chat-welcome-icon" />
+                    <p>ابدأ بكتابة رسالتك الأولى</p>
+                    {modelLoading && (
+                      <div className="inline-loading-notice">
+                        <Loader2 className="loading-spinner-tiny" />
+                        <span>النموذج يحمّل... سترى الردود عند اكتمال التحميل</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+                
                 {messages.map((msg, index) => (
                   <div
                     key={msg.id || index}
