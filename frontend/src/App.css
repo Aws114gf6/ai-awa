@@ -259,6 +259,20 @@ body {
   background: #4dd0e1;
   border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.status-dot.offline {
+  background: #bdbdbd;
+  animation: none;
+}
+
+.status-spinner {
+  width: 16px;
+  height: 16px;
+  color: #4dd0e1;
+  animation: spin 1s linear infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
