@@ -265,6 +265,14 @@ function App() {
               <MessageSquare className="empty-icon" />
               <h2>مرحباً بك في تطبيق المحادثة المحلي</h2>
               <p>ابدأ محادثة جديدة للتحدث مع الذكاء الاصطناعي المحلي</p>
+              
+              {modelLoading && (
+                <div className="model-loading-notice">
+                  <Loader2 className="loading-spinner-small" />
+                  <span>النموذج يحمّل في الخلفية... يمكنك البدء الآن!</span>
+                </div>
+              )}
+              
               <Button onClick={createNewConversation} className="start-btn" data-testid="start-conversation-btn">
                 <Plus className="icon" />
                 ابدأ محادثة جديدة
